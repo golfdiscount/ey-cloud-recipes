@@ -17,7 +17,7 @@ flavor = "thinking_sphinx"
 # If you don't want scheduled reindexes, just leave this commented.
 #
 # Uncommenting this line as-is will reindex once every 10 minutes.
-cron_interval = 10
+cron_interval = 15
 
 if ['solo', 'app', 'app_master'].include?(node[:instance_role])
 
@@ -75,7 +75,7 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
       })
     end
 
-    execute "#{flavor} config" do
+    #execute "#{flavor} config" do
       #GolfDiscount has a manual config
       #command "rake #{flavor}:configure"
       #user node[:owner_name]
@@ -84,7 +84,7 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
       #  'RAILS_ENV' => node[:environment][:framework_env]
       #})
       #cwd "/data/#{app_name}/current"
-    end
+    #end
 
     ey_cloud_report "indexing #{flavor}" do
       message "indexing #{flavor}"
