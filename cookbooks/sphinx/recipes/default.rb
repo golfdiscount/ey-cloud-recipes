@@ -75,7 +75,7 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
       })
     end
 
-    execute "sphinx config" do
+    execute "#{flavor} config" do
       #GolfDiscount has a manual config
       #command "rake #{flavor}:configure"
       #user node[:owner_name]
