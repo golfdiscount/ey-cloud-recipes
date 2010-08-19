@@ -100,6 +100,11 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
       cwd "/data/#{app_name}/current"
     end
 
+    ey_cloud_report "restarting #{flavor}" do
+      message "restarting #{flavor}"
+    end
+    execute "monit restart all -g sphinx_#{application}"
+
     execute "monit quit"
 
     if cron_interval
