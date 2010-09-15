@@ -26,7 +26,7 @@ require_recipe "memcached"
 #require_recipe "eybackup_slave"
 
 #uncomment to run the ssmtp recipe
-#require_recipe "ssmtp"
+require_recipe "ssmtp"
 
 #uncomment to run the mongodb recipe
 # require_recipe "mongodb"
@@ -46,7 +46,7 @@ require_recipe "memcached"
 #uncomment to run the redis recipe
 #require_recipe "redis"
 
-#require_recipe "logrotate"
+require_recipe "logrotate"
 #
 #uncomment to use the solr recipe
 #require_recipe "solr"
