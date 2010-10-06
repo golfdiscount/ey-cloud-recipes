@@ -6,10 +6,10 @@ require 'pp'
 
 if ['solo', 'app', 'app_master'].include?(node[:instance_role])
 
-  directory "/etc/ssmtp" do
-    recursive true
-    action :delete
-  end
+ # directory "/etc/ssmtp" do
+ #   recursive true
+  #  action :delete
+  #end
 
   directory "/data/ssmtp" do
     owner "root"
