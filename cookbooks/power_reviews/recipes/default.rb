@@ -69,6 +69,16 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
         command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:import_pr"
         user node[:owner_name]
       end
+      cron "powerreview upload" do
+        action  :create
+        minute  "*"
+        hour    '*'
+        day     '*/1'
+        month   '*'
+        weekday '*'
+        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:import_pr"
+        user node[:owner_name]
+      end
     end
 
   end
