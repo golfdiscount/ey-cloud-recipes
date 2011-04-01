@@ -17,9 +17,9 @@ flavor = "power reviews"
 # If you don't want scheduled reindexes, just leave this commented.
 #
 # Uncommenting this line as-is will reindex once every 10 minutes.
-cron_interval = 120
+cron_interval = 20
 
-if ['solo', 'app', 'app_master'].include?(node[:instance_role])
+if ['app_master'].include?(node[:instance_role])
 
   # be sure to replace "app_name" with the name of your application.
   run_for_app(appname) do |app_name, data|
@@ -29,17 +29,15 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
     end
 
 
-
-
     #execute "#{flavor} config" do
-      #GolfDiscount has a manual config
-      #command "rake #{flavor}:configure"
-      #user node[:owner_name]
-      #environment({
-      #  'HOME' => "/home/#{node[:owner_name]}",
-      #  'RAILS_ENV' => node[:environment][:framework_env]
-      #})
-      #cwd "/data/#{app_name}/current"
+    #GolfDiscount has a manual config
+    #command "rake #{flavor}:configure"
+    #user node[:owner_name]
+    #environment({
+    #  'HOME' => "/home/#{node[:owner_name]}",
+    #  'RAILS_ENV' => node[:environment][:framework_env]
+    #})
+    #cwd "/data/#{app_name}/current"
     #end
 
 
@@ -47,9 +45,9 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
       command "rake golfdiscount:import_pr"
       user node[:owner_name]
       environment({
-        'HOME' => "/home/#{node[:owner_name]}",
-        'RAILS_ENV' => node[:environment][:framework_env]
-      })
+                      'HOME' => "/home/#{node[:owner_name]}",
+                      'RAILS_ENV' => node[:environment][:framework_env]
+                  })
       cwd "/data/#{app_name}/current"
     end
 
@@ -60,25 +58,28 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
 
     if cron_interval
       cron "powerreview download" do
-        action  :create
-        minute  "*/#{cron_interval}"
-        hour    '*'
-        day     '*'
-        month   '*'
+        action :create
+        minute "*/#{cron_interval}"
+        hour '*'
+        day '*'
+        month '*'
         weekday '*'
         command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:import_pr"
         user node[:owner_name]
       end
       cron "powerreview upload" do
-        action  :create
-        minute  "*"
-        hour    '*'
-        day     '*/1'
-        month   '*'
+        action :create
+        minute "*"
+        hour '*'
+        day '*/1'
+        month '*'
         weekday '*'
-        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:import_pr"
+        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:export_powerreviews"
         user node[:owner_name]
       end
+
+
+
     end
 
   end
