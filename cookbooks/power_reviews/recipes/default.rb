@@ -71,7 +71,7 @@ if ['app_master'].include?(node[:instance_role])
         action :create
         minute "5"
         hour '3'
-        day '*/1'
+        day '*'
         month '*'
         weekday '*'
         command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:export_powerreviews"
