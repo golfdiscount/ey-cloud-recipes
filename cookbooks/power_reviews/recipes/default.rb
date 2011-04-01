@@ -69,8 +69,8 @@ if ['app_master'].include?(node[:instance_role])
       end
       cron "powerreview upload" do
         action :create
-        minute "*"
-        hour '*'
+        minute "5"
+        hour '3'
         day '*/1'
         month '*'
         weekday '*'
