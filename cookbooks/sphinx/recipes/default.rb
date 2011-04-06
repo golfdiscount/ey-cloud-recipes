@@ -25,6 +25,14 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
   run_for_app(appname) do |app_name, data|
 
     ey_cloud_report "Sphinx" do
+      message "Installing sphinx 0.9.9"
+    end
+
+    package "app-misc/sphinx" do 
+      version "0.9.9" 
+      action :install 
+    end
+    ey_cloud_report "Sphinx" do
       message "configuring #{flavor}"
     end
 
