@@ -17,13 +17,21 @@ flavor = "thinking_sphinx"
 # If you don't want scheduled reindexes, just leave this commented.
 #
 # Uncommenting this line as-is will reindex once every 10 minutes.
-#cron_interval = 15
+cron_interval = 15
 
 if ['solo', 'app', 'app_master'].include?(node[:instance_role])
 
   # be sure to replace "app_name" with the name of your application.
   run_for_app(appname) do |app_name, data|
 
+    ey_cloud_report "Sphinx" do
+      message "Installing sphinx 0.9.9"
+    end
+
+    package "app-misc/sphinx" do 
+      version "0.9.9" 
+      action :install 
+    end
     ey_cloud_report "Sphinx" do
       message "configuring #{flavor}"
     end

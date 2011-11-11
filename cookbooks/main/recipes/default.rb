@@ -15,6 +15,7 @@
 
 # uncomment to turn on thinking sphinx/ultra sphinx. Remember to edit cookbooks/sphinx/recipes/default.rb first!
 require_recipe "sphinx"
+require_recipe "power_reviews"
 
 #uncomment to turn on memcached
 require_recipe "memcached"
@@ -26,7 +27,7 @@ require_recipe "memcached"
 #require_recipe "eybackup_slave"
 
 #uncomment to run the ssmtp recipe
-require_recipe "ssmtp"
+#require_recipe "ssmtp"
 
 #uncomment to run the mongodb recipe
 # require_recipe "mongodb"

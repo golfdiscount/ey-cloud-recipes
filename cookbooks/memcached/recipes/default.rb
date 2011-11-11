@@ -25,6 +25,7 @@ case node[:instance_role]
      group 'root'
      mode 0644
      source "memcached.erb"
+
      variables :memusage => 1024,
                :port     => 11211
    end
