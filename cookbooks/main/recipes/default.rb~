@@ -19,8 +19,7 @@ require_recipe "power_reviews"
 
 #uncomment to turn on memcached
 require_recipe "memcached"
-#uncomment to turn on memcached
-require_recipe "passenger_tweaks"
+
 #uncomment to run the authorized_keys recipe
 #require_recipe "authorized_keys"
 
