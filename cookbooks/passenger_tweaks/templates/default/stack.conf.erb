@@ -14,6 +14,7 @@ passenger_root /usr/libexec/passenger;
 # improved ability to handle higher concurrency of HTTP client requests.
 #
 passenger_max_pool_size <%= @worker_count %>;
+passenger_max_requests 4000;
 
 #
 # If an application instance has not received any traffic after the given number
