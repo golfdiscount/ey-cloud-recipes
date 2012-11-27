@@ -4,16 +4,6 @@
 #
 
 if node[:name] == 'rake'
-  cron "GD - Outgoing - Inventory Sender" do
-    minute  "55"
-    hour    '8'
-    day     '*/1'
-    month   '*'
-    weekday '*'
-    user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:inventory_poster"
-  end
-
   cron "Rewards Marketing" do
     #0 16 */7 * *
     minute  "0"

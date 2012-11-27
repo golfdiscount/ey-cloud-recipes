@@ -1,10 +1,10 @@
 # Add your appname here
 app_name = 'GolfDiscount'
 # Add the new worker count you want
-worker_count = 16
+worker_count = 12
 # Add the memory limit you want to pass
 # to passenger_monitor in MB
-memory_limit = 650
+memory_limit = 550
 
 if ['app_master', 'app', 'solo'].include?(node[:instance_role])
   ey_cloud_report "passenger" do
