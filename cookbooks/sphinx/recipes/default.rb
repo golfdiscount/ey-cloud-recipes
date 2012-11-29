@@ -99,7 +99,7 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
     end
 
     execute "#{flavor} index" do
-      command "rake #{flavor}:reindex"
+      command "bundle exec rake #{flavor}:reindex"
       user node[:owner_name]
       environment({
         'HOME' => "/home/#{node[:owner_name]}",
@@ -124,7 +124,7 @@ if ['solo', 'app', 'app_master'].include?(node[:instance_role])
         day     '*'
         month   '*'
         weekday '*'
-        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake #{flavor}:reindex"
+        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} bundle exec rake #{flavor}:reindex"
         user node[:owner_name]
       end
     end

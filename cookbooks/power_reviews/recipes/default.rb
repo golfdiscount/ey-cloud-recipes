@@ -19,7 +19,8 @@ flavor = "power reviews"
 # Uncommenting this line as-is will reindex once every 10 minutes.
 cron_interval = 20
 
-if ['app_master'].include?(node[:instance_role])
+#if ['app_master'].include?(node[:instance_role])
+if node[:name] == 'rake'
 
   # be sure to replace "app_name" with the name of your application.
   run_for_app(appname) do |app_name, data|
@@ -64,7 +65,7 @@ if ['app_master'].include?(node[:instance_role])
         day '*'
         month '*'
         weekday '*'
-        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:import_pr"
+        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} bundle exec rake golfdiscount:import_pr"
         user node[:owner_name]
       end
       cron "powerreview upload" do
@@ -74,7 +75,7 @@ if ['app_master'].include?(node[:instance_role])
         day '*'
         month '*'
         weekday '*'
-        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} rake golfdiscount:export_powerreviews"
+        command "cd /data/#{app_name}/current && RAILS_ENV=#{node[:environment][:framework_env]} bundle exec rake golfdiscount:export_powerreviews"
         user node[:owner_name]
       end
 
