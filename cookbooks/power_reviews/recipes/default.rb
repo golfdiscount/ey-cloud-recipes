@@ -43,7 +43,7 @@ if node[:name] == 'rake'
 
 
     execute "#{flavor} index" do
-      command "rake golfdiscount:import_pr"
+      command "bundle exec rake golfdiscount:import_pr"
       user node[:owner_name]
       environment({
                       'HOME' => "/home/#{node[:owner_name]}",
@@ -60,8 +60,8 @@ if node[:name] == 'rake'
     if cron_interval
       cron "powerreview download" do
         action :create
-        minute "*/#{cron_interval}"
-        hour '*'
+        minute "20"
+        hour '2'
         day '*'
         month '*'
         weekday '*'
