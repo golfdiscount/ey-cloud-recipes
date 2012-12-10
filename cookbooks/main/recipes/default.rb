@@ -18,6 +18,7 @@ require_recipe "sphinx"
 require_recipe "power_reviews"
 # rake tasks
 require_recipe "cron"
+require_recipe 'collectd'
 
 #uncomment to turn on memcached
 require_recipe "memcached"
