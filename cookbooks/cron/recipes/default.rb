@@ -48,6 +48,17 @@ if node[:name] == 'rake'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:product_feed"
   end
 
+  cron "SLI Product Feed" do
+    #0 3 */1 * *
+    minute  "0"
+    hour    '5'
+    day     '*/1'
+    month   '*'
+    weekday '*'
+    user 'deploy'
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:sli_upload"
+  end
+
   cron "Mercent Inventory Feed" do
     #0 */2 * * *
     minute  "0"
