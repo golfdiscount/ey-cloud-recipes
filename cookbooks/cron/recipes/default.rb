@@ -26,6 +26,17 @@ if node[:name] == 'rake'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production rake marketing:order_follow_up"
   end
 
+  cron "Google Trusted Merchant Feeds" do
+    #0 16 */7 * *
+    minute  "30"
+    hour    '0'
+    day     '*/1'
+    month   '*'
+    weekday '*'
+    user 'deploy'
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:google_trusted_feeds"
+  end
+
   cron "Strands Recommender" do
     #0 3 */1 * *
     minute  "0"
