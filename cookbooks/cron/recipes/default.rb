@@ -15,6 +15,17 @@ if node[:name] == 'rake'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production rake marketing:send_loyalty"
   end
 
+  cron "Abandoned Cart Follow-up" do
+    #0 16 */7 * *
+    minute  "0"
+    hour    '0'
+    day     '*/1'
+    month   '*'
+    weekday '*'
+    user 'deploy'
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake marketing:order_follow_up"
+  end
+
   cron "Strands Recommender" do
     #0 3 */1 * *
     minute  "0"
