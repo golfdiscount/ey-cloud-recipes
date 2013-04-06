@@ -59,17 +59,15 @@ if node[:name] == 'rake'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:dod"
   end
 
-  if false
-    cron "Mercent Product Feed" do
-      #0 3 */1 * *
-      minute  "0"
-      hour    '3'
-      day     '*/1'
-      month   '*'
-      weekday '*'
-      user 'deploy'
-      command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:product_feed"
-    end
+  cron "Mercent Product Feed" do
+    #0 3 */1 * *
+    minute  "0"
+    hour    '3'
+    day     '*/1'
+    month   '*'
+    weekday '*'
+    user 'deploy'
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:product_feed"
   end
 
   cron "SLI Product Feed" do
@@ -114,17 +112,6 @@ if node[:name] == 'rake'
     weekday '*'
     user 'deploy'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:process_orders"
-  end
-
-  cron "MyBuys Upload" do
-    #0 1 */1 * *
-    minute  "0"
-    hour    '1'
-    day     '*/1'
-    month   '*'
-    weekday '*'
-    user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mybuys:upload_all"
   end
 
 end
