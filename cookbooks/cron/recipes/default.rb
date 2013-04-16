@@ -114,4 +114,15 @@ if node[:name] == 'rake'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:process_orders"
   end
 
+  cron "Verify Automated Task Log" do
+    #0 */1 * * *
+    minute  "0"
+    hour    '*/1'
+    day     '*'
+    month   '*'
+    weekday '*'
+    user 'deploy'
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake epicor:verify_log"
+  end
+
 end
