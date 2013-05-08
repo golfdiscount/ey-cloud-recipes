@@ -1,4 +1,5 @@
 #
+#
 # Cookbook Name:: cron
 # Recipe:: default
 #
@@ -72,9 +73,9 @@ if node[:name] == 'rake'
 
   cron "SLI Product Feed" do
     #0 3 */1 * *
-    minute  "0"
-    hour    '5'
-    day     '*/1'
+    minute  "30"
+    hour    '*'
+    day     '*'
     month   '*'
     weekday '*'
     user 'deploy'
