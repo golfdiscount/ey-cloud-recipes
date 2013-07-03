@@ -24,6 +24,7 @@ require_recipe 'collectd'
 require_recipe "memcached"
 #uncomment to turn on memcached
 require_recipe "passenger_tweaks"
+require_recipe "delayed_job"
 #uncomment to run the authorized_keys recipe
 #require_recipe "authorized_keys"
 
