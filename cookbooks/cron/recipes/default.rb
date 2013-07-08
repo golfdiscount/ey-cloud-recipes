@@ -13,7 +13,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake marketing:send_loyalty"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake marketing:send_loyalty"
   end
 
   cron "Abandoned Cart Follow-up" do
@@ -24,7 +24,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake marketing:order_follow_up"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake marketing:order_follow_up"
   end
 
   cron "Google Trusted Merchant Feeds" do
@@ -35,7 +35,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:google_trusted_feeds"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake golfdiscount:google_trusted_feeds"
   end
 
   cron "Strands Recommender" do
@@ -46,7 +46,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake marketing:upload_feed_files"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake marketing:upload_feed_files"
   end
 
   cron "Daily Catch All" do
@@ -57,7 +57,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:dod"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake golfdiscount:dod"
   end
 
   cron "Mercent Product Feed" do
@@ -68,7 +68,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:product_feed"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake mercent:product_feed"
   end
 
   cron "SLI Product Feed" do
@@ -79,7 +79,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:sli_upload"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake golfdiscount:sli_upload"
   end
 
   cron "Mercent Inventory Feed" do
@@ -90,7 +90,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:inventory_feed"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake mercent:inventory_feed"
   end
 
   cron "Buysight Upload" do
@@ -101,7 +101,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake golfdiscount:buysight_upload"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake golfdiscount:buysight_upload"
   end
 
   cron "Mercent Process Orders" do
@@ -112,7 +112,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake mercent:process_orders"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake mercent:process_orders"
   end
 
   cron "Verify Automated Task Log" do
@@ -123,7 +123,7 @@ if node[:name] == 'rake'
     month   '*'
     weekday '*'
     user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production rake epicor:verify_log"
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake epicor:verify_log"
   end
 
 end
