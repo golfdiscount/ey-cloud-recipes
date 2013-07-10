@@ -41,7 +41,7 @@ if node[:name] == 'rake'
   cron "Strands Recommender" do
     #0 3 */1 * *
     minute  "0"
-    hour    '3'
+    hour    '1'
     day     '*/1'
     month   '*'
     weekday '*'
@@ -69,17 +69,6 @@ if node[:name] == 'rake'
     weekday '*'
     user 'deploy'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake mercent:product_feed"
-  end
-
-  cron "SLI Product Feed" do
-    #0 3 */1 * *
-    minute  "30"
-    hour    '*'
-    day     '*'
-    month   '*'
-    weekday '*'
-    user 'deploy'
-    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake golfdiscount:sli_upload"
   end
 
   cron "Mercent Inventory Feed" do
