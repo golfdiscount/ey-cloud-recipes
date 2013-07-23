@@ -27,6 +27,17 @@ if node[:name] == 'rake'
     command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake marketing:order_follow_up"
   end
 
+  cron "Solr Cron Update" do
+    #0 16 */7 * *
+    minute  "0"
+    hour    '11'
+    day     '*/1'
+    month   '*'
+    weekday '*'
+    user 'deploy'
+    command "cd /data/GolfDiscount/current && RAILS_ENV=production bundle exec rake golfdiscount:solr_cron"
+  end
+
   cron "Google Trusted Merchant Feeds" do
     #0 16 */7 * *
     minute  "30"
