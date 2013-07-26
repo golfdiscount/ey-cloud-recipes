@@ -15,6 +15,7 @@ passenger_root /usr/libexec/passenger;
 #
 passenger_max_pool_size <%= @worker_count %>;
 passenger_max_requests 4000;
+passenger_min_instances 12;
 
 #
 # If an application instance has not received any traffic after the given number
@@ -32,7 +33,7 @@ passenger_max_requests 4000;
 # Setting the value to 0 is recommended if you're on a non-shared host that's
 # only running a few applications, each which must be available at all times.
 #
-passenger_pool_idle_time 3600;
+passenger_pool_idle_time 0;
 
 #
 # Default User/group switching.

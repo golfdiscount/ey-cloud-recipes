@@ -4,7 +4,7 @@
 # Recipe:: default
 #
 
-if node[:name] == 'rake'
+if node[:name] == 'nobody'
   cron "Rewards Marketing" do
     #0 16 */7 * *
     minute  "0"

@@ -62,4 +62,4 @@ require_recipe "logrotate"
 
 #uncomment to include the eybackup_verbose recipe
 #require_recipe "eybackup_verbose"
-require_recipe "power_reviews"
+#require_recipe "power_reviews"
